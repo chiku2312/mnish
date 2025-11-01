@@ -1,0 +1,44 @@
+name: CICD
+
+on:
+  push:
+    branches: 
+    - main
+    - master
+    
+jobs:
+  build-and-deploy:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      - name: Set Node.js 16.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Dependencies
+        run : npm install
+      - name: Genrate Deployment package
+        run: zip -r mnish-build.zip .
+      - name: Deploy to Elastic Beanstalk ☁️
+        uses: einaregilsson/beanstalk-deploy@v21 
+        with:
+          # --- Secrets ---
+          aws_access_key: ${{ secrets.aws_access_key }} 
+          aws_secret_key: ${{ secrets.aws_secret_access_key }}
+          application_name: 'siddharth' 
+          environment_name: 'siddharth-env' 
+          region: us-east-1
+          version_label: ${{ github.sha }}
+          
+          # --- Deployment Package Path ---
+          # Ab zip file folder ke andar hai, toh hum path specify karenge
+          deployment_package: nodejs-app/nodejs-app-build.zip # <--- CORRECTION 3: Zip file ka path set kiya
+
+
+
+
+
+
+
+        
