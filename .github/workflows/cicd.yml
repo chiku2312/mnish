@@ -2,13 +2,14 @@ name: CICD
 
 on:
   push:
-    branches: 
+    branches:
       - main
       - master
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Source
         uses: actions/checkout@v4
@@ -21,27 +22,17 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # ❌ Test step hata diya
-
-      - name: Generate Deployment package
+      - name: Generate Deployment Package
         run: zip -r mnish-build.zip .
 
       - name: Deploy to Elastic Beanstalk ☁️
-        uses: einaregilsson/beanstalk-deploy@v21 
+        uses: einaregilsson/beanstalk-deploy@v21
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: 'nodejs'
-          environment_name: 'nodejs-env'
+          application_name: 'nodejs'       # Beanstalk app ka naam
+          environment_name: 'nodejs-env'   # Beanstalk environment ka naam
           region: us-east-1
           version_label: ${{ github.sha }}
           deployment_package: mnish-build.zip
-
-
-
-
-
-
-
-
         
