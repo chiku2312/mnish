@@ -26,14 +26,14 @@ jobs:
           # --- Secrets ---
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }} 
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: 'siddharth' 
-          environment_name: 'siddharth-env' 
+          application_name: 'nodejs' 
+          environment_name: 'nodejs-env' 
           region: us-east-1
           version_label: ${{ github.sha }}
           
           # --- Deployment Package Path ---
           # Ab zip file folder ke andar hai, toh hum path specify karenge
-          deployment_package: nodejs-app/nodejs-app-build.zip # <--- CORRECTION 3: Zip file ka path set kiya
+          deployment_package: mnish-build.zip  # <--- CORRECTION 3: Zip file ka path set kiya
 
 
 
