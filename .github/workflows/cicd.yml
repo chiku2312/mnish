@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run : npm install
       - name: Genrate Deployment package
-        run: zip -r mnish-build.zip .
+        run: zip -r nodejs-build.zip .
       - name: Deploy to Elastic Beanstalk ☁️
         uses: einaregilsson/beanstalk-deploy@v21 
         with:
@@ -33,7 +33,7 @@ jobs:
           
           # --- Deployment Package Path ---
           # Ab zip file folder ke andar hai, toh hum path specify karenge
-          deployment_package: mnish-build.zip  # <--- CORRECTION 3: Zip file ka path set kiya
+          deployment_package: nodejs-build.zip  # <--- CORRECTION 3: Zip file ka path set kiya
 
 
 
