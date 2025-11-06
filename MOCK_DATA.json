@@ -1,4 +1,5 @@
-[{"id":1,"firstName":"Siddharth","lastName":"Nahata","email":"sid@example.com","password":"12345"},
+[
+{"id":1,"firstName":"Siddharth","lastName":"Nahata","email":"sid@example.com","password":"12345"},
 {"id":2,"firstName":"Laxmi","lastName":"Verma","email":"laxmi@example.com","password":"67890"}
 {"id":3,"firstName":"Moira","lastName":"Mazzilli","email":"mmazzilli2@163.com","password":"3GgdWoOfT"},
 {"id":4,"firstName":"Kaja","lastName":"True","email":"ktrue3@washington.edu","password":"N6032b"},
